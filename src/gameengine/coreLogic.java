@@ -3,8 +3,7 @@ package gameengine;
 public class coreLogic {
 
 	//Heathpoints player 
-			int SpielerLP = creatures.getBaseHp();
-			
+	
 			
 			// TODO Auto-generated method stub
 
