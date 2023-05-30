@@ -1,27 +1,64 @@
 package gameengine;
 
+import java.util.Random;
+
 public class creatures {
+	protected int maxHP;
+	protected int currentHP;
+	protected int[] spawnpoint = new int[2];
+	protected int minAtk;
+	protected int maxAtk;
 
-	//returns spawnpoint of a creature
-			public static int[] getSpawnpoint (int x , int y) {
-				 int[] coordinaten = new int [ 2 ];
-				 coordinaten[0] =  x;
-				 coordinaten[1] = y;
-				 return coordinaten;
-				 
+	
+	
+	
+	protected int getCurrentHp() {
+		return currentHP;
+	};
+
+	protected int getMaxHP() {
+		return maxHP;
 			};
-		//returns base hp of a creature
-		public static int getBaseHp () {
-			int lp = 0;
-			return lp;
-		};
-		
-		
-		
-		public static void main(String[] args) {
-			// TODO Auto-generated method stub
-
+	
+	protected void regenHP(int n) {
+		if (currentHP < maxHP) {
+			currentHP += n;
 		}
+		if (currentHP > maxHP) {
+			currentHP = maxHP;
+		}
+	};
 
-	}
-	//Der Plan wäre es die Gegner und den Spieler als Objekte hier anzulegen
+	protected void damage(int n) {
+		currentHP -= n;
+	};
+	
+	
+	// returns Spawnpoint of a class
+	protected int[] getSpawnpoint() {
+
+		return spawnpoint;
+	};
+
+	// returns a random int number within the range of Atk
+	protected int getAtk() {
+		Random r = new Random();
+		return r.nextInt(maxAtk - minAtk) + minAtk;
+
+	};
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
+
