@@ -9,6 +9,8 @@ public class player extends creatures {
 		currentHP = maxHP;
 		minAtk = 3;
 		maxAtk = 7;
+		currentLocation = spawnpoint;
+		stealth = 0.0;
 	}
 
 

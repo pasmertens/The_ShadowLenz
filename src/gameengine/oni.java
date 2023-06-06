@@ -8,6 +8,8 @@ public class oni extends enemy{
 		currentHP = maxHP;
 		minAtk = 3;
 		maxAtk = 6;
+		currentLocation = spawnpoint;
+		alertness = 0.20;
 	
 	}
 }
