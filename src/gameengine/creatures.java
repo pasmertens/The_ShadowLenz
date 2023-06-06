@@ -6,20 +6,19 @@ public class creatures {
 	protected int maxHP;
 	protected int currentHP;
 	protected int[] spawnpoint = new int[2];
+	protected int[] currentLocation = new int[2];
 	protected int minAtk;
 	protected int maxAtk;
+	protected double stealth;
 
-	
-	
-	
 	protected int getCurrentHp() {
 		return currentHP;
 	};
 
 	protected int getMaxHP() {
 		return maxHP;
-			};
-	
+	};
+
 	protected void regenHP(int n) {
 		if (currentHP < maxHP) {
 			currentHP += n;
@@ -32,8 +31,7 @@ public class creatures {
 	protected void damage(int n) {
 		currentHP -= n;
 	};
-	
-	
+
 	// returns Spawnpoint of a class
 	protected int[] getSpawnpoint() {
 
@@ -46,19 +44,9 @@ public class creatures {
 		return r.nextInt(maxAtk - minAtk) + minAtk;
 
 	};
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-}
 
+	protected int[] getCurrentLocation() {
+		return currentLocation;
+	}
+
+}
