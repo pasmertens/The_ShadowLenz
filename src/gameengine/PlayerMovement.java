@@ -6,8 +6,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 
-import javax.swing.*;
-
 
 public class PlayerMovement extends JPanel implements KeyListener {
 	private static final long serialVersionUID = 1L;
@@ -99,21 +97,7 @@ public class PlayerMovement extends JPanel implements KeyListener {
 	public void keyTyped(KeyEvent e) {
 	}
 
-    public static void main(String[] args) {    
-    	
-        JFrame frame = new JFrame("Player Movement");
-        PlayerMovement playerMovement = new PlayerMovement();
-        frame.add(playerMovement);
-        frame.setSize(ROOM_WIDTH * 20, ROOM_HEIGHT * 20);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-        frame.addKeyListener(playerMovement);
-        frame.setSize(400, 225);
-        frame.setResizable(false); // Make the window non-resizable
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(new PlayerMovement());
-    }
-
+   
     private void enterCombat() {
         String[] options = {"Steal", "Attack"};
         int choice = JOptionPane.showOptionDialog(null, "Choose an action:", "Combat",
@@ -132,6 +116,24 @@ public class PlayerMovement extends JPanel implements KeyListener {
         playerY = ROOM_HEIGHT / 2;
         room[playerY][playerX] = 'P';
     }
-
+    
+    
+    
+    
+    
+ public static void main(String[] args) {    
+    	
+        JFrame frame = new JFrame("Player Movement");
+        PlayerMovement playerMovement = new PlayerMovement();
+        frame.add(playerMovement);
+        frame.setSize(ROOM_WIDTH * 20, ROOM_HEIGHT * 20);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+        frame.addKeyListener(playerMovement);
+        frame.setSize(400, 225);
+        frame.setResizable(true); // Make the window non-resizable
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(new PlayerMovement());
+    }
 }
 
