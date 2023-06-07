@@ -18,11 +18,37 @@ public class test {
 		}
 	}
 
+	
+	public static enemy enemySelect(int n) { //decides, which monster will appear in the dungeon
+	enemy ort;
+	
+	if( n == 1) {
+	ort = new oni();
+	return ort ;}else {
+		ort = new enemy();
+		return ort;
+	}
+	
+	
+	}
+	
+	
+	
 	public static void main(String[] args) {
+		//create new player
 		player p = new player();
-		oni o = new oni();
+		
+		//create an enemy
+		enemy o = enemySelect(1);
+		enemySelect(1);		
+		
+		//try damage, regeneration and attack
 		p.damage(4);
 		p.regenHP(9);
+		//System.out.println(p.getAtk());
+		System.out.println(p.currentHP);
+		
+		//try random steal function
 		if (o.steal(p.stealth) == 1) {
 			System.out.println("Yes");
 		} else {
@@ -30,13 +56,15 @@ public class test {
 		}
 		;
 		
+		//try room creation
 		room test = new room(p.spawnpoint, o.spawnpoint);
+		
+		//try getRoom funktion
 		printRoom(test.getRoom());
 	
 		
 		
-		/* System.out.println(p.getAtk());
-		
+		/* 	
 		
 		JFrame frame = new JFrame("Test");
 		// PlayerMovement playerMovement = new PlayerMovement();

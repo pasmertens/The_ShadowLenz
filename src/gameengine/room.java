@@ -29,6 +29,7 @@ public class room {
 	};
 }
 
+
 /*
  * private void enterNewRoom(int[] n) { room[n[1]][n[0]] = ' '; // Clear the
  * player's previous position room(); // Update player position to one space
