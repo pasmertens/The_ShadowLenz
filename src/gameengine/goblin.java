@@ -1,17 +1,14 @@
 package gameengine;
 
-public class oni extends enemy{
-
-
-	oni() {
+public class goblin extends enemy{
+	goblin() {
 		spawnpoint[0] = 9;
-		spawnpoint[1] = 3;
-		maxHP = 20;
+		spawnpoint[1] = 2;
+		maxHP = 30;
 		currentHP = maxHP;
-		minAtk = 6;
-		maxAtk = 8;
+		minAtk = 9;
+		maxAtk = 10;
 		currentLocation = spawnpoint;
 		alertness = 0.20;
-	
 	}
 }

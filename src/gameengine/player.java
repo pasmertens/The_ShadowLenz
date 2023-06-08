@@ -4,17 +4,22 @@ package gameengine;
 
 public class player extends creatures {
 
+	protected int keyCount;
+	
+	protected void addKey(int n) {
+		keyCount += n;
+	};
 	player() {
 		
 		spawnpoint[0] = 2;
 		spawnpoint[1] = 4;
-		maxHP = 30;
+		maxHP = 80;
 		currentHP = maxHP;
-		minAtk = 3;
-		maxAtk = 7;
+		minAtk = 6;
+		maxAtk = 12;
 		currentLocation = spawnpoint;
 		stealth = 0.0;
-		
+		keyCount = 0;
 	}
 
 

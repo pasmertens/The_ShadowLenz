@@ -1,17 +1,15 @@
 package gameengine;
 
-public class oni extends enemy{
+public class witch extends enemy {
 
-
-	oni() {
+	witch() {
 		spawnpoint[0] = 9;
-		spawnpoint[1] = 3;
-		maxHP = 20;
+		spawnpoint[1] = 1;
+		maxHP = 30;
 		currentHP = maxHP;
-		minAtk = 6;
-		maxAtk = 8;
+		minAtk = 9;
+		maxAtk = 10;
 		currentLocation = spawnpoint;
 		alertness = 0.20;
-	
 	}
 }
