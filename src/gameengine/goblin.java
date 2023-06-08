@@ -9,6 +9,7 @@ public class goblin extends enemy{
 		minAtk = 9;
 		maxAtk = 10;
 		currentLocation = spawnpoint;
-		alertness = 0.20;
+		alertness = 0.70;
+		name = "Goblin";
 	}
 }

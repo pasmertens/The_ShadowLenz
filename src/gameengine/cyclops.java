@@ -11,6 +11,7 @@ public class cyclops extends enemy {
 		minAtk = 9;
 		maxAtk = 10;
 		currentLocation = spawnpoint;
-		alertness = 0.20;
+		alertness = 0.30;
+		name = "Cyclops";
 	}
 }

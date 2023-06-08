@@ -10,6 +10,7 @@ public class creatures {
 	protected int minAtk;
 	protected int maxAtk;
 	protected double stealth;
+	protected String name;
 
 	protected int getCurrentHp() {
 		return currentHP;

@@ -11,7 +11,8 @@ public class oni extends enemy{
 		minAtk = 6;
 		maxAtk = 8;
 		currentLocation = spawnpoint;
-		alertness = 0.20;
+		alertness = 0.60;
+		name = "Oni";
 	
 	}
 }

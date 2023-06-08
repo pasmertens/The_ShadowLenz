@@ -7,9 +7,10 @@ public class witch extends enemy {
 		spawnpoint[1] = 1;
 		maxHP = 30;
 		currentHP = maxHP;
-		minAtk = 9;
+		minAtk = 7;
 		maxAtk = 10;
 		currentLocation = spawnpoint;
-		alertness = 0.20;
+		alertness = 0.40;
+		name = "Witch";
 	}
 }

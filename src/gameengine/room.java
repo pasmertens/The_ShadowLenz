@@ -5,6 +5,7 @@ public class room {
 	protected final int width = 16;
 	protected final int height = 9;
 	char[][] room = new char[height][width];
+	
 
 	public room(int[] n, int[] m) {
 
