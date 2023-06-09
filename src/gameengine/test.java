@@ -51,6 +51,8 @@ public class test {
 
 	}
 
+	
+	
 	public static void main(String[] args) {
 		// create new player
 		player p = new player();
