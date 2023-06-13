@@ -51,6 +51,62 @@ public class test {
 
 	}
 
+	private static void startGame() {
+		player p = new player(); // create the player for the whole run
+		int roomCount = 0;
+		
+		while(p.currentHP> 0){
+		
+			if (p.currentHP > 0 && roomCount < 5) {							//stage one
+			enemy o = enemySelect();	
+				room test = new room(p.spawnpoint, o.spawnpoint);	
+			//test= nextRoom(p, o, test);
+			roomCount += 1;
+			o.currentHP=o.maxHP;
+			printRoom(test.getRoom());
+			encounter(p, o );
+			}
+			
+			else if(p.currentHP > 0 && roomCount == 5) {					//bonfire
+				enemy o = enemySelect();	
+				room test = new room(p.spawnpoint, o.spawnpoint);
+			System.out.println("You entered a bonfire room");
+			p.keyCount -= 1;
+			o = new bonfire();
+			System.out.println(o.name);
+			test = new room(p.spawnpoint, o.spawnpoint);
+			roomCount += 1;
+			o.currentHP=o.maxHP;
+			printRoom(test.getRoom());
+			sitDown(p);
+			}
+			
+			else if(p.currentHP > 0 && roomCount > 5 && roomCount < 11) {	//stage two
+				enemy o = enemySelect();	
+				room test = new room(p.spawnpoint, o.spawnpoint);
+				roomCount += 1;
+				o.currentHP=o.maxHP;
+				printRoom(test.getRoom());
+				encounter(p, o );
+				}
+			
+			else if(p.currentHP > 0 && roomCount == 11) {					//boss
+				System.out.println("You entered the boss room");
+				p.keyCount -= 1;
+				enemy o = new boss();
+//				System.out.println(o.name);
+				room test = new room(p.spawnpoint, o.spawnpoint);
+				roomCount += 1;
+				o.currentHP=o.maxHP;
+				printRoom(test.getRoom());
+				boolean f = fight(p, o, 0);
+				if (f == true) {
+					System.out.println("Congrats. You cleared the Dungeon");
+				}else {
+					System.out.println("Du bist gestorben!");
+				}
+			};
+			};	};
 	
 	
 	public static void main(String[] args) {
@@ -58,7 +114,7 @@ public class test {
 		player p = new player();
 
 		// create an enemy
-		enemy o = enemySelect();
+		//enemy o = enemySelect();
 		//System.out.println(o.name);
 		
 		int roomCount = 0;
@@ -78,22 +134,32 @@ public class test {
 
 		// try room creation
 //		room test = new room(p.spawnpoint, o.spawnpoint);
-		room test = new room(p.spawnpoint, o.spawnpoint);
+		//room test = new room(p.spawnpoint, o.spawnpoint);
 		// try getRoom funktion
 //		printRoom(test.getRoom());
 
 		//test encounter
-		//stage one
-		while (p.currentHP > 0 && roomCount < 5) {
+		while(p.currentHP> 0){
 			
-		test= nextRoom(p, o, test);
+		//stage one
+		if (p.currentHP > 0 && roomCount < 5) {
+		enemy o = enemySelect();	
+			room test = new room(p.spawnpoint, o.spawnpoint);	
+		//test= nextRoom(p, o, test);
 		roomCount += 1;
 		o.currentHP=o.maxHP;
 		printRoom(test.getRoom());
 		encounter(p, o );
-		};
+		}
+		
+		
+		
+		
+		
 		//bonfire
-		while(p.currentHP > 0 && roomCount == 5) {
+		else if(p.currentHP > 0 && roomCount == 5) {
+			enemy o = enemySelect();	
+			room test = new room(p.spawnpoint, o.spawnpoint);
 		System.out.println("You entered a bonfire room");
 		p.keyCount -= 1;
 		o = new bonfire();
@@ -103,22 +169,30 @@ public class test {
 		o.currentHP=o.maxHP;
 		printRoom(test.getRoom());
 		sitDown(p);
-		};
+		}
+		
+		
+		
+		
 		//stage two
-		while(p.currentHP > 0 && roomCount > 5 && roomCount < 10) {
-			test= nextRoom(p, o, test);
+		else if(p.currentHP > 0 && roomCount > 5 && roomCount < 11) {
+			enemy o = enemySelect();	
+			room test = new room(p.spawnpoint, o.spawnpoint);
 			roomCount += 1;
 			o.currentHP=o.maxHP;
 			printRoom(test.getRoom());
 			encounter(p, o );
-		};
+			}
+		
+		
+		
 		//boss
-		while(p.currentHP > 0 && roomCount == 10) {
+		else if(p.currentHP > 0 && roomCount == 11) {
 			System.out.println("You entered the boss room");
 			p.keyCount -= 1;
-			o = new boss();
+			enemy o = new boss();
 //			System.out.println(o.name);
-			test = new room(p.spawnpoint, o.spawnpoint);
+			room test = new room(p.spawnpoint, o.spawnpoint);
 			roomCount += 1;
 			o.currentHP=o.maxHP;
 			printRoom(test.getRoom());
@@ -129,7 +203,7 @@ public class test {
 				System.out.println("Du bist gestorben!");
 			}
 		};
-		};	
+		};	};
 	
 		
 		

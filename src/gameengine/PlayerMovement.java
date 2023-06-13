@@ -39,7 +39,7 @@ public class PlayerMovement extends JPanel implements KeyListener {
         room[monsterY][monsterX] = 'M'; // Monster
     }
     
-    protected void paintComponent(Graphics g) {
+   protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         for (int y = 0; y < ROOM_HEIGHT; y++) {
             for (int x = 0; x < ROOM_WIDTH; x++) {
