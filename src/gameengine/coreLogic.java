@@ -11,6 +11,17 @@ public class coreLogic {
 	}
 
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	private static void startGame() {
 		player p = new player(); // create the player for the whole run
 		int roomCount = 0;
@@ -68,6 +79,16 @@ public class coreLogic {
 		;
 	};
 
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
 	private static enemy enemySelect(int k) { // decides, which monster will appear in the dungeon
 		enemy e;
 
@@ -118,6 +139,14 @@ public class coreLogic {
 	}
 
 
+	
+	
+	
+	
+	
+	
+	
+	
 	private static boolean interaction(player p, enemy e) {
 		String[] options = { "Steal", "Attack" };
 		int choice = JOptionPane.showOptionDialog(null, "Choose an action:", "Combat", JOptionPane.DEFAULT_OPTION,
@@ -142,6 +171,19 @@ public class coreLogic {
 		}
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	private static boolean fight(player p, enemy e, int n) {
 //				System.out.println("enemy HP" + e.currentHP);
 		if (n == 0) {
@@ -186,6 +228,16 @@ public class coreLogic {
 		return false;
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	private static void sitDown(player p) {
 		Object[] options = { "Sit Down" };
 		int choice = JOptionPane.showOptionDialog(null, "Choose an action:", "Combat", JOptionPane.DEFAULT_OPTION,
@@ -196,18 +248,42 @@ public class coreLogic {
 		}
 	}
 
-	private static void encounter(player p, enemy o) {
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public static void encounter(player p, enemy o) { 
 		boolean encounter = interaction(p, o);
-		if (encounter == true) {
+		if (encounter == true) {//if fight is won, key is added
 			System.out.println("Du hast einen Schlüssel erhalten");
 			System.out.println(p.currentHP);
 			p.keyCount += 1;
 
-		} else {
+		} else {//if fight is lost, player is dead
 			System.out.println("Du bist gestorben!");
 		}
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	private static void printRoom(char[][] board) {
 
 		for (int i = 0; i < board.length; i++) {

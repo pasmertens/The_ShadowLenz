@@ -4,7 +4,7 @@ package gameengine;
 
 public class player extends creatures {
 
-	protected int keyCount;
+	public int keyCount;
 	
 	protected void addKey(int n) {
 		keyCount += n;
@@ -21,6 +21,11 @@ public class player extends creatures {
 		stealth = 0.0;
 		keyCount = 0;
 	}
+
+	protected int getCurrentLocation(int n) {
+		return currentLocation[n];
+	}
+
 
 
 }

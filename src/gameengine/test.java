@@ -4,7 +4,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
+
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Random;
+import gui.*;
 
 public class test {
 
@@ -113,6 +119,24 @@ public class test {
 		// create new player
 		player p = new player();
 
+		JFrame frame = new JFrame("Player Movement");
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		// create an enemy
 		//enemy o = enemySelect();
 		//System.out.println(o.name);
@@ -149,7 +173,8 @@ public class test {
 		roomCount += 1;
 		o.currentHP=o.maxHP;
 		printRoom(test.getRoom());
-		encounter(p, o );
+//		encounter(p, o );
+		
 		}
 		
 		
@@ -334,6 +359,91 @@ private static void sitDown(player p) {
 	if (choice == 0) {
 	p.regenHP(15);
 }}
+
+
+
+
+
+
+
+
+
+
+
+public void keyPressed(KeyEvent e, player p, enemy m, room r) {
+    int keyCode = e.getKeyCode();
+    int newX = p.getCurrentLocation(0);
+    int newY = p.getCurrentLocation(1);
+
+    if (keyCode == KeyEvent.VK_UP) {
+        newY--;
+    } else if (keyCode == KeyEvent.VK_DOWN) {
+    	newY++;
+    } else if (keyCode == KeyEvent.VK_LEFT) {
+    	newX--;
+    } else if (keyCode == KeyEvent.VK_RIGHT) {
+    	newX++;
+    }
+
+    if (r.room[newY][newX] != '#' && r.room[newY][newX] != 'D') { // Check for wall and door
+        // Check for monster proximity
+        if (Math.abs(newX - m.spawnpoint[0]) <= 1 && Math.abs(newY - m.spawnpoint[1]) <= 1) {
+            encounter(p, m);
+        } else {
+            // Update player position
+            r.room[p.currentLocation[1]][p.currentLocation[0]] = ' ';
+            p.currentLocation[0] = newX;
+            p.currentLocation[1] = newY;
+            r.room[p.currentLocation[0]][p.currentLocation[1]] = 'P';
+        }
+    } else if (r.room[newY][newX] == 'D' && newX == (r.width - 1)) {
+        if (p.keyCount>0) {
+            int result = JOptionPane.showConfirmDialog(null, "Do you want to enter the door?", "Enter Door", JOptionPane.YES_NO_OPTION);
+            if (result == JOptionPane.YES_OPTION) {
+                r.room[p.currentLocation[1]][p.currentLocation[0]] = ' '; // Clear the player's previous position
+//                repaint(); // Redraw the room after clearing the player's position
+//                enterNewRoom();
+                p.keyCount -= 1; // Remove the key after entering the new room
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Du brauchst einen Schlüssel um diese Tür zu öffnen");
+        }
+    }
+//    repaint();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

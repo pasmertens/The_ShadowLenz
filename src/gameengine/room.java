@@ -2,9 +2,9 @@ package gameengine;
 
 public class room {
 
-	protected final int width = 16;
-	protected final int height = 9;
-	char[][] room = new char[height][width];
+	public final int width = 16;
+	public final int height = 9;
+	public char[][] room = new char[height][width];
 	
 
 	public room(int[] n, int[] m) {
@@ -28,6 +28,20 @@ public class room {
 	public char[][] getRoom() {
 		return room;
 	};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
@@ -39,6 +53,16 @@ public class room {
  * main(String[] args) { // TODO Auto-generated method stub int[] p
  * 
  * inializeRoom(); }
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
  * 
  * }
  */
