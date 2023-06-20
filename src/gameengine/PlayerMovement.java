@@ -19,10 +19,11 @@ public class PlayerMovement extends JPanel implements KeyListener {
     private int monsterX = ROOM_WIDTH / 2;
     private int monsterY = ROOM_HEIGHT / 2 - 1;
     private boolean hasKey = false;
+    private Image backgroundImage;
 
         public PlayerMovement() {
-            initializeRoom();
-        }
+        	ImageIcon backgroundIcon = new ImageIcon(getClass().getResource("/images/RoomBackground.png"));
+            backgroundImage = backgroundIcon.getImage().getScaledInstance(1600, 675,Image.SCALE_SMOOTH);                }
 
         private void initializeRoom() {
         for (int y = 0; y < ROOM_HEIGHT; y++) {
@@ -40,17 +41,33 @@ public class PlayerMovement extends JPanel implements KeyListener {
         room[ROOM_HEIGHT / 2][(ROOM_WIDTH  - 1) ] = 'D'; // Right door
         room[monsterY][monsterX] = 'M'; // Monster
     }
-    
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        for (int y = 0; y < ROOM_HEIGHT; y++) {
-            for (int x = 0; x < ROOM_WIDTH; x++) {
-                g.drawString(String.valueOf(room[y][x]), x * 20, y * 20);
+        
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            int yOffset = 0; // Add an offset to move the top wall down
+            g.drawImage(backgroundImage, 0, yOffset, getWidth(), getHeight() - yOffset, this);
+
+            int scaleFactorX = getWidth()  / ROOM_WIDTH;
+            int scaleFactorY = (getHeight() - yOffset) / ROOM_HEIGHT;
+
+            for (int y = 0; y < ROOM_HEIGHT; y++) {
+                for (int x = 0; x < ROOM_WIDTH; x++) {
+                    char gridElement = room[y][x];
+                    if (gridElement != ' ') {
+                        if (gridElement == 'P') {
+                            g.setColor(Color.BLUE);
+                        } else if (gridElement == 'M') {
+                            g.setColor(Color.RED);
+                        } else {
+                            continue; // Skip to the next iteration if the grid element is not a player or a monster
+                        }
+                        g.fillRect(x * scaleFactorX, yOffset + (y * scaleFactorY), scaleFactorX, scaleFactorY);
+                    }
+                }
             }
         }
-    }
-    
-    public void keyPressed(KeyEvent e) {
+
+        public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
         int newX = playerX;
         int newY = playerY;
@@ -108,10 +125,11 @@ public class PlayerMovement extends JPanel implements KeyListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.addKeyListener(playerMovement);
-        frame.setSize(400, 225);
-        frame.setResizable(false); // Make the window non-resizable
+        frame.setSize(1200, 675);
+        frame.setResizable(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(new PlayerMovement());
+        frame.setSize(ROOM_WIDTH * 20, ROOM_HEIGHT * 20 + 30);
     }
 
     private void enterCombat() {
@@ -132,6 +150,7 @@ public class PlayerMovement extends JPanel implements KeyListener {
         playerY = ROOM_HEIGHT / 2;
         room[playerY][playerX] = 'P';
     }
+    
 
 }
 
