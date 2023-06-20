@@ -1,7 +1,7 @@
 package gameengine;
 
 import java.util.Random;
-
+import GUI.*;
 import javax.swing.JOptionPane;
 
 public class coreLogic {
@@ -10,18 +10,6 @@ public class coreLogic {
 		startGame();
 	}
 
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	private static void startGame() {
 		player p = new player(); // create the player for the whole run
 		int roomCount = 0;
@@ -31,31 +19,44 @@ public class coreLogic {
 			if (p.currentHP > 0 && roomCount < 5) { // stage one
 				enemy o = enemySelect(1);
 				room test = new room(p.spawnpoint, o.spawnpoint);
-				// test= nextRoom(p, o, test);
+				p.currentLocation = p.spawnpoint;
 				roomCount += 1;
 				o.currentHP = o.maxHP;
+				playerMovement move = new playerMovement(p, o, test);
 				printRoom(test.getRoom());
-				encounter(p, o);
+				checkPosition(move,p,o);
+				
+				
 			}
 
 			else if (p.currentHP > 0 && roomCount == 5) { // bonfire
 				enemy o = new bonfire();
 				room test = new room(p.spawnpoint, o.spawnpoint);
+				p.currentLocation = p.spawnpoint;
 				System.out.println("You entered a bonfire room");
 				test = new room(p.spawnpoint, o.spawnpoint);
 				roomCount += 1;
+				playerMovement move = new playerMovement(p, o, test);
 				printRoom(test.getRoom());
-				sitDown(p);
+				if (Math.abs(move.p.currentLocation[0] - move.m.spawnpoint[0]) <= 1
+						&& Math.abs(move.p.currentLocation[1] - move.m.spawnpoint[1]) <= 1) {
+					sitDown(p);
+				}
 				System.out.println("You regenerated 30 HP");
 			}
 
 			else if (p.currentHP > 0 && roomCount > 5 && roomCount < 11) { // stage two
 				enemy o = enemySelect(2);
 				room test = new room(p.spawnpoint, o.spawnpoint);
+				p.currentLocation = p.spawnpoint;
 				roomCount += 1;
 				o.currentHP = o.maxHP;
+				playerMovement move = new playerMovement(p, o, test);
 				printRoom(test.getRoom());
-				encounter(p, o);
+				if (Math.abs(move.p.currentLocation[0] - move.m.spawnpoint[0]) <= 1
+						&& Math.abs(move.p.currentLocation[1] - move.m.spawnpoint[1]) <= 1) {
+					encounter(p, o);
+				}
 			}
 
 			else if (p.currentHP > 0 && roomCount == 11) { // boss
@@ -65,55 +66,50 @@ public class coreLogic {
 //				System.out.println(o.name);
 				room test = new room(p.spawnpoint, o.spawnpoint);
 				roomCount += 1;
+				playerMovement move = new playerMovement(p, o, test);
 				o.currentHP = o.maxHP;
 				printRoom(test.getRoom());
-				boolean f = fight(p, o, 0);
-				if (f == true) {
-					System.out.println("Congrats. You cleared the Dungeon");
-				} else {
-					System.out.println("Du bist gestorben!");
+				if (Math.abs(move.p.currentLocation[0] - move.m.spawnpoint[0]) <= 1
+						&& Math.abs(move.p.currentLocation[1] - move.m.spawnpoint[1]) <= 1) {
+					boolean f = fight(p, o, 0);
+					if (f == true) {
+						System.out.println("Congrats. You cleared the Dungeon");
+					} else {
+						System.out.println("Du bist gestorben!");
+					}
 				}
+				;
 			}
 			;
 		}
 		;
 	};
 
-	
-	
-	
-	
-
-	
-	
-	
-	
-	
 	private static enemy enemySelect(int k) { // decides, which monster will appear in the dungeon
 		enemy e;
 
 		Random r = new Random();
-		if(k ==1) {
-		int i = r.nextInt(3);
+		if (k == 1) {
+			int i = r.nextInt(3);
 
-		//System.out.println(i);
+			// System.out.println(i);
 
-		switch (i) {
-		case 0:
-			e = new oni();
-			return e;
-		case 1:
-			e = new cyclops();
-			return e;
-		case 2:
-			e = new goblin();
-			return e;
+			switch (i) {
+			case 0:
+				e = new oni();
+				return e;
+			case 1:
+				e = new cyclops();
+				return e;
+			case 2:
+				e = new goblin();
+				return e;
 
-		default:
-			e = new goblin();
-			return e;
-		}
-		}else if(k == 2) {
+			default:
+				e = new goblin();
+				return e;
+			}
+		} else if (k == 2) {
 			int i = r.nextInt(3);
 			switch (i) {
 			case 0:
@@ -129,7 +125,8 @@ public class coreLogic {
 			default:
 				e = new oni();
 				return e;
-		}}else {
+			}
+		} else {
 			e = new bonfire();
 			return e;
 		}
@@ -138,15 +135,6 @@ public class coreLogic {
 
 	}
 
-
-	
-	
-	
-	
-	
-	
-	
-	
 	private static boolean interaction(player p, enemy e) {
 		String[] options = { "Steal", "Attack" };
 		int choice = JOptionPane.showOptionDialog(null, "Choose an action:", "Combat", JOptionPane.DEFAULT_OPTION,
@@ -171,19 +159,6 @@ public class coreLogic {
 		}
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	private static boolean fight(player p, enemy e, int n) {
 //				System.out.println("enemy HP" + e.currentHP);
 		if (n == 0) {
@@ -228,16 +203,6 @@ public class coreLogic {
 		return false;
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	private static void sitDown(player p) {
 		Object[] options = { "Sit Down" };
 		int choice = JOptionPane.showOptionDialog(null, "Choose an action:", "Combat", JOptionPane.DEFAULT_OPTION,
@@ -248,42 +213,18 @@ public class coreLogic {
 		}
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public static void encounter(player p, enemy o) { 
+	public static void encounter(player p, enemy o) {
 		boolean encounter = interaction(p, o);
-		if (encounter == true) {//if fight is won, key is added
+		if (encounter == true) {// if fight is won, key is added
 			System.out.println("Du hast einen Schlüssel erhalten");
 			System.out.println(p.currentHP);
 			p.keyCount += 1;
 
-		} else {//if fight is lost, player is dead
+		} else {// if fight is lost, player is dead
 			System.out.println("Du bist gestorben!");
 		}
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	private static void printRoom(char[][] board) {
 
 		for (int i = 0; i < board.length; i++) {
@@ -294,4 +235,14 @@ public class coreLogic {
 			System.out.println();
 		}
 	}
+
+private static void checkPosition(playerMovement move, player p, enemy o) {
+	if (Math.abs(move.p.currentLocation[0] - move.m.spawnpoint[0]) <= 1
+			&& Math.abs(move.p.currentLocation[1] - move.m.spawnpoint[1]) <= 1) {
+		encounter(p, o);
+		break;
+		
+	}else {checkPosition(move, p, o);}
+}
+
 }
