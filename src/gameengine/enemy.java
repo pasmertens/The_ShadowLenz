@@ -4,16 +4,17 @@ public class enemy extends creatures {
 	protected double alertness;
 	//triggerarea = spawnpoint;
 	
-	//compares the alertness value of the enemy with a random number + stealth value of the player -> 0 if steal unsuccessful, 1 if steal successful
+	//compares the alertness value of the enemy with a random number + stealth value of the player  
+	// true if steal is successful, false if steal is unsuccessful
 	
-	public int steal(double s) {
+	public boolean steal(double s) {
 		
 		double n = Math.random()+ s;
-
-		if (n < alertness) {
-			return 0;
+		//System.out.println(n);
+		if (n > alertness) {
+			return true;
 		} else {
-			return 1;
+			return false;
 		}
 	};
 

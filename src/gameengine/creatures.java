@@ -5,11 +5,12 @@ import java.util.Random;
 public class creatures {
 	protected int maxHP;
 	protected int currentHP;
-	protected int[] spawnpoint = new int[2];
-	protected int[] currentLocation = new int[2];
+	public int[] spawnpoint = new int[2];
+	public int[] currentLocation = new int[2];
 	protected int minAtk;
 	protected int maxAtk;
 	protected double stealth;
+	protected String name;
 
 	protected int getCurrentHp() {
 		return currentHP;
@@ -45,8 +46,5 @@ public class creatures {
 
 	};
 
-	protected int[] getCurrentLocation() {
-		return currentLocation;
-	}
-
+	
 }
