@@ -24,9 +24,8 @@ public class coreLogic {
 				o.currentHP = o.maxHP;
 				playerMovement move = new playerMovement(p, o, test);
 				printRoom(test.getRoom());
-				checkPosition(move,p,o);
-				
-				
+				//checkPosition(move, p, o);
+
 			}
 
 			else if (p.currentHP > 0 && roomCount == 5) { // bonfire
@@ -136,11 +135,8 @@ public class coreLogic {
 	}
 
 	private static boolean interaction(player p, enemy e) {
-		String[] options = { "Steal", "Attack" };
-		int choice = JOptionPane.showOptionDialog(null, "Choose an action:", "Combat", JOptionPane.DEFAULT_OPTION,
-				JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
-
-		if (choice == 0) {
+		Interaction i= new Interaction();
+		if (i.steal() == 0) {
 
 			if (e.steal(p.stealth) == true) {
 //						System.out.println("Steal");
@@ -150,7 +146,7 @@ public class coreLogic {
 				return fight(p, e, 1);
 			}
 
-		} else if (choice == 1) {
+		} else if (i.steal() == 1) {
 //					System.out.println("Fight");
 			return fight(p, e, 0);
 		} else {
@@ -205,7 +201,7 @@ public class coreLogic {
 
 	private static void sitDown(player p) {
 		Object[] options = { "Sit Down" };
-		int choice = JOptionPane.showOptionDialog(null, "Choose an action:", "Combat", JOptionPane.DEFAULT_OPTION,
+		int choice = JOptionPane.showOptionDialog(null, "Choose an action:", "SitDown", JOptionPane.DEFAULT_OPTION,
 				JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
 
 		if (choice == 0) {
@@ -236,13 +232,25 @@ public class coreLogic {
 		}
 	}
 
-private static void checkPosition(playerMovement move, player p, enemy o) {
-	if (Math.abs(move.p.currentLocation[0] - move.m.spawnpoint[0]) <= 1
-			&& Math.abs(move.p.currentLocation[1] - move.m.spawnpoint[1]) <= 1) {
-		encounter(p, o);
-		break;
+	private static void checkPosition(playerMovement move, player p, enemy o) {
+		while(Math.abs(move.p.currentLocation[0] - move.m.spawnpoint[0]) > 1
+				&& Math.abs(move.p.currentLocation[1] - move.m.spawnpoint[1]) > 1) {
+			checkPosition(move, p, o);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
-	}else {checkPosition(move, p, o);}
-}
+		if (Math.abs(move.p.currentLocation[0] - move.m.spawnpoint[0]) <= 1
+				&& Math.abs(move.p.currentLocation[1] - move.m.spawnpoint[1]) <= 1) {
+			encounter(p, o);
+
+		} else {
+			checkPosition(move, p, o);
+		}
+	}
 
 }
