@@ -23,8 +23,8 @@ public class coreLogic {
 				roomCount += 1;
 				o.currentHP = o.maxHP;
 				playerMovement move = new playerMovement(p, o, test);
-				printRoom(test.getRoom());
-				//checkPosition(move, p, o);
+				new GUI();
+				checkPosition(move, p, o);
 
 			}
 
@@ -130,8 +130,7 @@ public class coreLogic {
 			return e;
 		}
 
-		;
-
+		
 	}
 
 	private static boolean interaction(player p, enemy e) {
@@ -233,24 +232,25 @@ public class coreLogic {
 	}
 
 	private static void checkPosition(playerMovement move, player p, enemy o) {
-		while(Math.abs(move.p.currentLocation[0] - move.m.spawnpoint[0]) > 1
-				&& Math.abs(move.p.currentLocation[1] - move.m.spawnpoint[1]) > 1) {
-			checkPosition(move, p, o);
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
-		if (Math.abs(move.p.currentLocation[0] - move.m.spawnpoint[0]) <= 1
-				&& Math.abs(move.p.currentLocation[1] - move.m.spawnpoint[1]) <= 1) {
-			encounter(p, o);
-
-		} else {
-			checkPosition(move, p, o);
-		}
+	    while (true) {
+	        if (Math.abs(move.p.currentLocation[0] - move.m.spawnpoint[0]) > 1
+	                && Math.abs(move.p.currentLocation[1] - move.m.spawnpoint[1]) > 1) {
+	            try {
+	                Thread.sleep(1000);
+	            } catch (InterruptedException e) {
+	                e.printStackTrace();
+	            }
+	        } else if (Math.abs(move.p.currentLocation[0] - move.m.spawnpoint[0]) <= 1
+	                && Math.abs(move.p.currentLocation[1] - move.m.spawnpoint[1]) <= 1) {
+	            encounter(p, o);
+	        } else {
+	            try {
+	                Thread.sleep(1000);
+	            } catch (InterruptedException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    }
 	}
 
 }
