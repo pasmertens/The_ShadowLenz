@@ -37,11 +37,8 @@ public class BattlePanel extends JPanel {
     
 
     private void initComponents(Player p, Enemy en, int playerdamage, int enemydamage, GameFrame f) {
-        setLayout(new BorderLayout());
-        encounterPanel = new JPanel();
-        fightPanel = new JPanel();
-        logPanel = new JPanel();
-
+        setLayout(null);
+        
         enemyname = en.getName();
 
         encounterLabel = new JLabel("Ein " + enemyname + " steht vor dir");
@@ -49,101 +46,131 @@ public class BattlePanel extends JPanel {
         playerDamageLabel = new JLabel("Du hast den " + enemyname + " angegriffen und ihm " + playerdamage + " schaden zugefügt");
         enemyDamageLabel = new JLabel ("Der " + enemyname + " hat dich angegriffen und dir " + enemydamage + " schaden zugefügt");
 
-        stealButton = new JButton("Den Schlüssel klauen");
-        fightButton = new JButton("Kämpfen");
-        attackButton = new JButton("Angreifen");
-        returnButton = new JButton("Ok");
-
         pHealthBar =  new HealthBar(p, f);
         enHealthBar = new HealthBar(en, f);
 
-        JPanel HealthPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, f.getWidth()/2, f.getHeight()/20));
-        HealthPanel.setOpaque(false);
-        HealthPanel.add(pHealthBar);
-        HealthPanel.add(enHealthBar);
+        JPanel healthPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, (int) (f.getWidth() * 0.3), f.getHeight()/20));
+        healthPanel.setOpaque(false);
+        healthPanel.setBounds(0, 0, f.getWidth(), f.getHeight());
+        System.out.println(healthPanel.getBounds());
+        healthPanel.add(pHealthBar);
+        healthPanel.add(enHealthBar);
 
-        encounterPanel = createPanel(f);
-        
-        fightPanel.setBounds(20, 300, 746, 100);
-        fightPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(137,112,88)));
-        fightPanel.setLayout(null);
+        encounterPanel = createEncounterPanel(f);
+        fightPanel = createFightPanel(f);
+        logPanel = createLogPanel(f);
 
-        fightLabel.setBounds(   
-            (int) (fightPanel.getWidth() * 0.5 - 170), 
-            (int) (fightPanel.getHeight() * 0.9), 
-            340, 
-            20);
-        fightPanel.add(fightLabel);
-
-        attackButton.setBounds(
-            (int) (fightPanel.getWidth() * 0.5 - 60), 
-            (int) (fightPanel.getHeight() * 0.5), 
-            120, 
-            30);
-        fightPanel.add(attackButton);
-
-        logPanel.setBounds(20, 300, 746, 100);
-        logPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(137,112,88)));
-        logPanel.setLayout(null);
-
-        playerDamageLabel.setBounds(   
-            (int) (logPanel.getWidth() * 0.5 - 170), 
-            (int) (logPanel.getHeight() * 0.9), 
-            340, 
-            20);
-        logPanel.add(playerDamageLabel);
-
-        enemyDamageLabel.setBounds(   
-            (int) (logPanel.getWidth() * 0.5 - 170), 
-            (int) (logPanel.getHeight() * 0.7), 
-            340, 
-            20);
-        logPanel.add(enemyDamageLabel);
-
-        returnButton.setBounds(
-            (int) (logPanel.getWidth() * 0.5 - 60), 
-            (int) (logPanel.getHeight() * 0.5), 
-            120, 
-            30);
-        logPanel.add(returnButton);
-
-        encounterPanel.setVisible(true);
         fightPanel.setVisible(false);
-        logPanel.setVisible(false);
+        encounterPanel.setVisible(false);
 
-        add(HealthPanel);
         add(encounterPanel);
         add(fightPanel);
         add(logPanel);
+        add(healthPanel);
     }
 
-    public JPanel createPanel(JFrame f) {
-        JPanel panel = new JPanel();
-        panel.setSize(f.getWidth()-f.getWidth()/30, f.getHeight()/4); //muss hier trotz set Bounds nochmal gesetzt werden, 
-                                                                      //da sonst die SubPanels keine Size übernehmen können
-        panel.setBounds(f.getWidth()/60, (int) (f.getHeight()*0.7), panel.getWidth(), panel.getHeight());
-        panel.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(137,112,88)));
-        panel.setLayout(null);
+    public JPanel createEncounterPanel(JFrame f) {
+        JPanel panel = createInnerPannel(f);
 
-        JPanel textPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, panel.getHeight()/9));
-        textPanel.setOpaque(false);
-        textPanel.setBounds(0, 0, panel.getWidth(), panel.getHeight());
-        textPanel.add(encounterLabel);
-        panel.add(textPanel);
-
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, panel.getWidth()/8, (int) (panel.getHeight() * 0.4)));
-        buttonPanel.setOpaque(false);
-        buttonPanel.setBounds(0, 0, panel.getWidth(), panel.getHeight());
-
-        fightButton.setPreferredSize(new Dimension(f.getWidth()/5, f.getHeight()/18));
+        JPanel textPanel = createTextPanel(panel, encounterLabel);
+        JPanel buttonPanel = createButtonPanel(panel);
+        
+        fightButton = createButton(f, "Kämpfen");
         buttonPanel.add(fightButton);    
 
-        stealButton.setPreferredSize(new Dimension(f.getWidth()/5, f.getHeight()/18));
+        stealButton = createButton(f, "Den Schlüssel klauen");
         buttonPanel.add(stealButton);
         
+        panel.add(textPanel);
         panel.add(buttonPanel);
         return panel;
     }
+
+    public JPanel createFightPanel(JFrame f) {
+        JPanel panel = createInnerPannel(f);
+
+        JPanel textPanel = createTextPanel(panel, fightLabel);
+        JPanel buttonPanel = createButtonPanel(panel);
+        
+        attackButton = createButton(f, "Angreifen");
+        buttonPanel.add(attackButton);
+        
+        panel.add(textPanel);
+        panel.add(buttonPanel);
+        return panel;
+    }
+
+    public JPanel createLogPanel(JFrame f) {
+        JPanel panel = createInnerPannel(f);
+
+        JPanel playerDamagePanel = createTextPanel(panel, playerDamageLabel);
+        JPanel enemyDamagePanel = createTextPanel(panel, enemyDamageLabel);
+        enemyDamagePanel.setBounds(0,  panel.getHeight()/6, panel.getWidth(), panel.getHeight());
+        JPanel buttonPanel = createButtonPanel(panel);
+        buttonPanel.setBounds(0, panel.getHeight()/9, panel.getWidth(), panel.getHeight());
+
+        returnButton = createButton(f, "Ok");
+        buttonPanel.add(returnButton);
+        
+        panel.add(playerDamagePanel);
+        panel.add(enemyDamagePanel);
+        panel.add(buttonPanel);
+        return panel;
+    }
+
+    
+    public JPanel createInnerPannel(JFrame f) {
+        JPanel panel = new JPanel();
+        /* 
+         * Setzt das Panel auf zum frame relative Größe   
+         * setSize muss hier trotz setBounds ausgeführt werden, 
+         * da das Panel sonst keine Größe hat, auf die die Subpanels zurückgreifen können 
+         */
+        panel.setSize(f.getWidth()-f.getWidth()/30, f.getHeight()/4); 
+        panel.setBounds(f.getWidth()/60, (int) (f.getHeight()*1), panel.getWidth(), panel.getHeight());                                                                                                                                                   panel.setBounds(f.getWidth()/60, (int) (f.getHeight()*0.7), panel.getWidth(), panel.getHeight());
+        panel.setBorder(BorderFactory.createLineBorder(new java.awt.Color(137,112,88), 2, true));
+        panel.setLayout(null);
+        return panel;
+    }
+    
+    private JPanel createTextPanel(JPanel p, JLabel text) {
+        JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, p.getHeight()/9));
+        panel.setOpaque(false);
+        panel.setBounds(0, 0, p.getWidth(), p.getHeight());
+        panel.add(text);
+        
+        return panel;
+    }
+
+    private JPanel createButtonPanel(JPanel p) {
+        JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER, p.getWidth()/8, (int) (p.getHeight() * 0.4)));
+        panel.setOpaque(false);
+        panel.setBounds(0, 0, p.getWidth(), p.getHeight());
+        return panel;
+    }
+
+    private JButton createButton(JFrame f, String s) {
+        JButton button = new JButton(s);
+        button.setPreferredSize(new Dimension(f.getWidth()/5, f.getHeight()/18));
+        button.setContentAreaFilled(false);
+        button.setBorderPainted(true);
+        button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(137,112,88), 2, true));
+        button.setFocusable(false);
+
+        button.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseEntered(MouseEvent e){
+                button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(137,112,88), 5, true));
+            }
+            @Override
+            public void mouseExited(MouseEvent e){
+                button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(137,112,88), 2, true));
+            }
+        });
+
+        return button;
+    }
+    
     
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
@@ -153,7 +180,7 @@ public class BattlePanel extends JPanel {
                 Goblin en = new Goblin();
                 GameFrame f = new GameFrame();
                 f.setSize(1200, 675);
-
+                //f.setUndecorated(false);
                 BattlePanel battleScreen = new BattlePanel(p, en, 1, 2, f);
 
                 
