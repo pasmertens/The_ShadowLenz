@@ -125,13 +125,13 @@ public class BattlePanel extends JPanel {
         panel.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(137,112,88)));
         panel.setLayout(null);
 
-        JPanel textPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, panel.getHeight()/10));
+        JPanel textPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, panel.getHeight()/9));
         textPanel.setOpaque(false);
         textPanel.setBounds(0, 0, panel.getWidth(), panel.getHeight());
         textPanel.add(encounterLabel);
         panel.add(textPanel);
 
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, panel.getWidth()/4, panel.getHeight()/2));
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, panel.getWidth()/8, (int) (panel.getHeight() * 0.4)));
         buttonPanel.setOpaque(false);
         buttonPanel.setBounds(0, 0, panel.getWidth(), panel.getHeight());
 
