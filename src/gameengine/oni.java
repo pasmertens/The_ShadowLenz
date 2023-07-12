@@ -1,9 +1,7 @@
 package gameengine;
 
-public class oni extends enemy{
-
-
-	oni() {
+public class Oni extends Enemy {
+	Oni() {
 		spawnpoint[0] = 9;
 		spawnpoint[1] = 3;
 		maxHP = 20;

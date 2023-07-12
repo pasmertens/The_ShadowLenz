@@ -1,8 +1,7 @@
 package gameengine;
 
-public class boss extends enemy{
-
-	boss() {
+public class Boss extends Enemy {
+	public Boss() {
 		spawnpoint[0] = 8;
 		spawnpoint[1] = 4;
 		maxHP = 35;
@@ -13,5 +12,4 @@ public class boss extends enemy{
 		alertness = 0.70;
 		name = "Vampire";
 	}
-
 }

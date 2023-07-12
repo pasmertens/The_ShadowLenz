@@ -1,13 +1,14 @@
 package gameengine;
 
-public class room {
-
+public class Room {
 	public final int width = 16;
 	public final int height = 9;
 	public char[][] room = new char[height][width];
+	Player p;
+	Enemy f;
 	
 
-	public room(int[] n, int[] m) {
+	public Room(int[] n, int[] m) {
 
 		for (int x = 0; x < height; x++) {
 			for (int y = 0; y < width; y++) {
@@ -29,40 +30,4 @@ public class room {
 		return room;
 	};
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
-/*
- * private void enterNewRoom(int[] n) { room[n[1]][n[0]] = ' '; // Clear the
- * player's previous position room(); // Update player position to one space
- * right of the left door playerX = (ROOM_WIDTH - 1) / 2 + 1; playerY =
- * ROOM_HEIGHT / 2; room[playerY][playerX] = 'P'; } /*public static void
- * main(String[] args) { // TODO Auto-generated method stub int[] p
- * 
- * inializeRoom(); }
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * }
- */

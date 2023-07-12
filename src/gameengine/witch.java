@@ -1,8 +1,7 @@
 package gameengine;
 
-public class witch extends enemy {
-
-	witch() {
+public class Witch extends Enemy {
+	Witch() {
 		spawnpoint[0] = 9;
 		spawnpoint[1] = 1;
 		maxHP = 30;
