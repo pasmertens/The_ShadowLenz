@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   sodipodi:docname="Zeichnung.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="2.3786088"
+     inkscape:cx="253.08912"
+     inkscape:cy="424.61795"
+     inkscape:window-width="2880"
+     inkscape:window-height="1760"
+     inkscape:window-x="-12"
+     inkscape:window-y="-12"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <marker
+       style="overflow:visible"
+       id="Arrow1"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Arrow1"
+       markerWidth="4.0606604"
+       markerHeight="6.7071066"
+       viewBox="0 0 4.0606602 6.7071068"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:none;stroke:context-stroke;stroke-width:1;stroke-linecap:butt"
+         d="M 3,-3 0,0 3,3"
+         id="path5057"
+         transform="rotate(180,0.125,0)"
+         sodipodi:nodetypes="ccc" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g2066"
+       style="display:inline;stroke:#ba0000;stroke-opacity:1"
+       transform="matrix(5.3449966,0,0,5.3449966,-253.25678,-442.59205)"
+       inkscape:label="Schließen"
+       inkscape:export-filename="CloseIcon.png"
+       inkscape:export-xdpi="64.325104"
+       inkscape:export-ydpi="64.325104">
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#ba0000;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         d="m 55.54068,94.396001 9.146401,9.146409"
+         id="path1964"
+         sodipodi:nodetypes="cc" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#ba0000;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         d="m 55.54068,103.54241 9.146401,-9.146409"
+         id="path1966"
+         sodipodi:nodetypes="cc" />
+      <rect
+         style="display:inline;fill:none;fill-rule:evenodd;stroke:none;stroke-width:0.0499999;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         id="rect2484"
+         width="78.973831"
+         height="78.971886"
+         x="28.564844"
+         y="46.912498"
+         transform="matrix(0.18709086,0,0,0.18709086,47.382028,82.804926)"
+         inkscape:export-filename="CloseIcon.png"
+         inkscape:export-xdpi="6.4284401"
+         inkscape:export-ydpi="6.4284401" />
+    </g>
+    <g
+       id="g2496"
+       inkscape:label="FullScreen"
+       transform="translate(-7.1815383e-7,78.971885)"
+       inkscape:export-filename="MaximizeIcon.png"
+       inkscape:export-xdpi="64.325104"
+       inkscape:export-ydpi="64.325104">
+      <path
+         id="rect788"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4.78075;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         d="m 53.542882,100.90771 c 9.672862,0 19.345731,0 29.018595,0 0,-9.67284 0,-19.345703 0,-29.018566 -9.672864,0 -19.345733,0 -29.018595,0 0,9.672863 0,19.345726 0,29.018566 z" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4.78075;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1)"
+         d="M 48.700993,67.047289 42.166745,60.513008"
+         id="path1201" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4.78075;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1)"
+         d="m 48.700993,105.74885 -6.534248,6.53427"
+         id="path1612" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4.78075;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1)"
+         d="m 87.402528,67.047289 6.534251,-6.534281"
+         id="path1624" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4.78075;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1)"
+         d="m 87.402528,105.74885 6.534251,6.53427"
+         id="path1626" />
+      <rect
+         style="display:inline;fill:none;fill-rule:evenodd;stroke:none;stroke-width:0.0499999;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         id="rect2486"
+         width="78.973831"
+         height="78.971886"
+         x="28.564844"
+         y="46.912498"
+         inkscape:export-filename="MaximizeIcon.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+    </g>
+    <g
+       id="g2590"
+       style="display:inline;stroke:#ba0000;stroke-opacity:1"
+       transform="matrix(5.3449966,0,0,5.3449966,-174.23295,-442.59205)"
+       inkscape:label="Minimieren"
+       inkscape:export-filename="MinimizeIcon.png"
+       inkscape:export-xdpi="64.325111"
+       inkscape:export-ydpi="64.325111">
+      <rect
+         style="display:inline;fill:none;fill-rule:evenodd;stroke:none;stroke-width:0.0499999;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         id="rect2588"
+         width="78.973831"
+         height="78.971886"
+         x="28.564844"
+         y="46.912498"
+         transform="matrix(0.18709086,0,0,0.18709086,47.382028,82.804926)"
+         inkscape:export-filename="MinimizeIcon.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:9.539;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         d="M 43.607967,189.81367 H 92.495448"
+         id="path2592"
+         transform="matrix(0.18709086,0,0,0.18709086,47.382028,68.030008)"
+         sodipodi:nodetypes="cc" />
+    </g>
+  </g>
+</svg>

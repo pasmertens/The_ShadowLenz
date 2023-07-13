@@ -1,0 +1,35 @@
+ 
+
+
+        
+
+        //passt alle Komponenten automatisch an, wenn framegröße verändert wird
+        addComponentListener(new ComponentAdapter() {
+            public void componentResized(ComponentEvent componentEvent) {
+                double framewidth = getWidth();
+                double frameheight = getHeight();
+                x = framewidth / 800;
+                y = frameheight / 450;
+                updateComponentSizes();
+                healthBar.resizeBar(x, y);
+                setLocationRelativeTo(null); 
+            }
+        });
+
+    private void updateComponentSizes() {
+        mainPanel.setBounds(         (int) (x * 20),     (int) (y * 300),    (int) (x * 746),    (int) (y * 100) );
+        gnomeLabel.setBounds(        (int) (x * 10),     (int) (y * 5),      (int) (x * 340),    (int) (y * 20)  );
+        stealButton.setBounds(       (int) (x * 200),    (int) (y * 40),     (int) (x * 120),    (int) (y * 30)  );
+        fightButton.setBounds(       (int) (x * 40),     (int) (y * 40),     (int) (x * 120),    (int) (y * 30)  );
+        fightPanel.setBounds(        (int) (x * 20),     (int) (y * 300),    (int) (x * 746),    (int) (y * 100) );
+        moveLabel.setBounds(         (int) (x * 10),     (int) (y * 5),      (int) (x * 340),    (int) (y * 20)  );
+        attackButton.setBounds(      (int) (x * 40),     (int) (y * 40),     (int) (x * 120),    (int) (y * 30)  );
+        defendButton.setBounds(      (int) (x * 200),    (int) (y * 40),     (int) (x * 120),    (int) (y * 30)  );
+        logPanel.setBounds(          (int) (x * 20),     (int) (y * 300),    (int) (x * 746),    (int) (y * 100) );
+        playerDamageLabel.setBounds( (int) (x * 10),     (int) (y * 5),      (int) (x * 340),    (int) (y * 20)  );
+        enemyDamageLabel.setBounds(  (int) (x * 10),     (int) (y * 35),     (int) (x * 340),    (int) (y * 20)  );
+        defenseChoiceLabel.setBounds((int) (x * 10),     (int) (y * 5),      (int) (x * 340),    (int) (y * 20)  );
+        returnButton.setBounds(      (int) (x * 10),     (int) (y * 65),     (int) (x * 120),    (int) (y * 30)  );
+    }
+
+   

@@ -1,15 +1,12 @@
 package gameengine;
 
-
-
-public class player extends creatures {
-
+public class Player extends Creature {
 	public int keyCount;
 	
 	protected void addKey(int n) {
 		keyCount += n;
 	};
-	player() {
+	public Player() {
 		
 		spawnpoint[0] = 2;
 		spawnpoint[1] = 4;
@@ -25,7 +22,5 @@ public class player extends creatures {
 	protected int getCurrentLocation(int n) {
 		return currentLocation[n];
 	}
-
-
 
 }

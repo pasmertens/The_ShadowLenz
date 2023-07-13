@@ -1,0 +1,17 @@
+private void setFullScreen() {
+        setSize(0, 0, GameFrame.get)
+        resizeComponents();
+    }
+
+    private void FSButton() {
+        FSButton = new JButton("Fullscreen");
+        
+        FSButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setFullScreen();
+            }   
+        });
+
+        titlePanel.add(FSButton);
+    }

@@ -1,7 +1,7 @@
 package gameengine;
 
-public class goblin extends enemy{
-	goblin() {
+public class Goblin extends Enemy {
+	public Goblin() {
 		spawnpoint[0] = 9;
 		spawnpoint[1] = 2;
 		maxHP = 15;

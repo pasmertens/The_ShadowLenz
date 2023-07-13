@@ -1,9 +1,7 @@
 package gameengine;
 
-public class cyclops extends enemy {
-
-	
-	cyclops() {
+public class Cyclops extends Enemy {
+	Cyclops() {
 		spawnpoint[0] = 9;
 		spawnpoint[1] = 5;
 		maxHP = 30;
