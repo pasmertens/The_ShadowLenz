@@ -40,62 +40,14 @@ public class TitlePanel extends JPanel {
     }
 
     private void initButtons() {
-        enterButton = new JButton("JA");
-        leaveButton = new JButton("NEIN");
-
-        enterButton.setForeground(Color.WHITE);
-        leaveButton.setForeground(Color.WHITE);
-        
-        //enterButton.setBackground(new Color(0, 0, 0, 50));
-        enterButton.setContentAreaFilled(false);
-        enterButton.setBorderPainted(true);
-        enterButton.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2, true));
-        //enterButton.setOpaque(false);
-        enterButton.setFocusable(false);
-
-        leaveButton.setContentAreaFilled(false);
-        leaveButton.setBorderPainted(true);
-        leaveButton.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2, true));
-        leaveButton.setOpaque(false);
-        leaveButton.setFocusable(false);
-
-        
-        
-
-        enterButton.addMouseListener(new MouseAdapter(){
-            @Override
-            public void mouseEntered(MouseEvent e){
-                enterButton.setBorder(BorderFactory.createLineBorder(Color.GRAY, 5, true));
-            }
-            @Override
-            public void mouseExited(MouseEvent e){
-                enterButton.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2, true));
-            }
-        });
-
-        leaveButton.addMouseListener(new MouseAdapter(){
-            @Override
-            public void mouseEntered(MouseEvent e){
-                leaveButton.setBorder(BorderFactory.createLineBorder(Color.GRAY, 5, true));
-            }
-            @Override
-            public void mouseExited(MouseEvent e){
-                leaveButton.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2, true));
-            }
-        });
-        
-        buttonSize = new Dimension(new Dimension((int) (f.getWidth() * 0.1),(int) (f.getHeight() * 0.05)));
-
-        enterButton.setPreferredSize(buttonSize);
-        leaveButton.setPreferredSize(buttonSize);
-        //enterButton.setBounds   (   f.getWidth()/2 - 150,       (int) (f.getHeight() * 0.55),       200,            35              );
-        //leaveButton.setBounds   (   f.getWidth()/2 +  50,       (int) (f.getHeight() * 0.55),       100,            35              ); 
+        enterButton = createButton(f, "JA");
+        leaveButton = createButton(f, "NEIN");
         
         enterButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 k=2;
-                //TODO add code
+                setVisible(false);
             }
         });
 
@@ -103,7 +55,7 @@ public class TitlePanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 k=3;
-                //TODO add code
+                System.exit(0);
             }   
         });
         
@@ -117,13 +69,36 @@ public class TitlePanel extends JPanel {
         componentPanel.add(leaveButton);
     }
 
-    
+    private JButton createButton(JFrame f, String s) {
+        JButton button = new JButton(s);
+        button.setPreferredSize(new Dimension(f.getWidth()/10, f.getHeight()/18));
+        button.setForeground(Color.WHITE);
+        button.setContentAreaFilled(false);
+        button.setBorderPainted(true);
+        button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(137,112,88), 2, true));
+        button.setOpaque(false);
+        button.setFocusable(false);
 
-    private void resizeComponents() {
-        setBounds               (   0,                        0,                                f.getWidth(),   f.getHeight()   );
-        componentPanel.setBounds(   0,                        0,                                f.getWidth(),   f.getHeight()     );
-        enterButton.setBounds   (   f.getWidth()/2 - 150,       (int) (f.getHeight() * 0.55),       100,            35              );
-        leaveButton.setBounds   (   f.getWidth()/2 +  50,       (int) (f.getHeight() * 0.55),       100,            35              ); 
+        button.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseEntered(MouseEvent e){
+                button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(137,112,88), 5, true));
+            }
+            @Override
+            public void mouseExited(MouseEvent e){
+                button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(137,112,88), 2, true));
+            }
+        });
+
+        return button;
+    }
+
+    protected void resizeComponents(JFrame frame) {
+        f = frame;
+        setBounds               ( 0,                     0,                             f.getWidth(),     f.getHeight()   );
+        componentPanel.setBounds( 0,                     0,                             f.getWidth(),     f.getHeight()     );
+        enterButton.setBounds   ( f.getWidth()/2 - 150,  (int) (f.getHeight() * 0.55),  f.getWidth()/10,  f.getHeight()/18 );
+        leaveButton.setBounds   ( f.getWidth()/2 +  50,  (int) (f.getHeight() * 0.55),  f.getWidth()/10,  f.getHeight()/18 ); 
     }
 
     public int returnK() {
@@ -133,7 +108,7 @@ public class TitlePanel extends JPanel {
     public static void main(String[] args) {
         GameFrame gFrame = new GameFrame();
         WindowControl winCon = new WindowControl(gFrame);
-        gFrame.setSize(800, 600);
+        gFrame.setSize(1200, 675);
         TitlePanel tPanel = new TitlePanel(gFrame);
         gFrame.add(tPanel);
         gFrame.add(winCon);

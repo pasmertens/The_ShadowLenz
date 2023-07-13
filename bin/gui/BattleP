@@ -16,43 +16,6 @@
             }
         });
 
-
-        fightButton.addActionListener(e -> {
-            mainPanel.setVisible(false);
-            fightPanel.setVisible(true);
-        });
-
-        stealButton.addActionListener(e -> {
-
-        });
-
-        defendButton.addActionListener(e -> {
-            //mache die benötigten Komponenten sichtbar und den Rest unsichtbar
-            playerDamageLabel.setVisible(false);
-            defenseChoiceLabel.setVisible(true);
-            fightPanel.setVisible(false);
-            logPanel.setVisible(true);
-
-            //aktualisiere die HP Leiste
-            healthBar.updateBar();
-        });
-
-        attackButton.addActionListener(e -> {
-            fightPanel.setVisible(false);
-            logPanel.setVisible(true);
-            
-            //aktualisiere die HP Leiste
-            healthBar.updateBar();
-        });
-        returnButton.addActionListener(e -> {
-            //mache die benötigten Komponenten sichtbar und den Rest unsichtbar
-            logPanel.setVisible(false);
-            fightPanel.setVisible(true);
-            defenseChoiceLabel.setVisible(false);
-            playerDamageLabel.setVisible(true);
-        });
-    }
-
     private void updateComponentSizes() {
         mainPanel.setBounds(         (int) (x * 20),     (int) (y * 300),    (int) (x * 746),    (int) (y * 100) );
         gnomeLabel.setBounds(        (int) (x * 10),     (int) (y * 5),      (int) (x * 340),    (int) (y * 20)  );
@@ -69,15 +32,4 @@
         returnButton.setBounds(      (int) (x * 10),     (int) (y * 65),     (int) (x * 120),    (int) (y * 30)  );
     }
 
-    public static void main(String[] args) {
-        player player = new player();
-        BattleScreen battleScreen = new BattleScreen(player);
-        //battleScreen.setUndecorated(true);
-        //battleScreen.setExtendedState(battleScreen.MAXIMIZED_BOTH);
-        battleScreen.setVisible(true);
-    }
-}
-
-
-
-import guiSideboard.HealthBar;
+   

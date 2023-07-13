@@ -12,8 +12,8 @@ public class test extends JFrame {
         // Create and add resizable components
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.BOTH;
-        gbc.weightx = 1.0;
-        gbc.weighty = 1.0;
+        gbc.weightx = 0.5;
+        gbc.weighty = 0.5;
 
         // Component 1
         JPanel component1 = new JPanel();

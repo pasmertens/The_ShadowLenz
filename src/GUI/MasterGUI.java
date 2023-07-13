@@ -10,33 +10,37 @@ public class MasterGUI {
 	public static void main(String[] args) {
 
 		Player dummyPlayer = new Player();
-		Enemy dummyEnemy = new Enemy();
+		Goblin dummyEnemy = new Goblin();
 		GameFrame frame = new GameFrame();
 		TitlePanel title = new TitlePanel(frame);
-		//BattlePanel battle = new BattlePanel(dummyPlayer, dummyEnemy, 0, 0);
+		BattlePanel battle = new BattlePanel(dummyPlayer, dummyEnemy, 0, 0, frame);
 		WindowControl winCon = new WindowControl(frame);
 
+		title.setBounds(0, 0, frame.getWidth(), frame.getHeight());
 		winCon.setBounds(0, 0, frame.getWidth(), frame.getHeight());
-		//battle.setBounds(0, 0, frame.getWidth(), frame.getHeight());
+		battle.setBounds(0, 0, frame.getWidth(), frame.getHeight());
+
+		frame.getContentPane().add(winCon, 1, 0);
 
 		frame.getContentPane().add(title, 0, 0);
-		frame.getContentPane().add(winCon, 1, 0);
-		//frame.getContentPane().add(battle, 0, 0);
-
-		title.setVisible(false);
+		frame.getContentPane().add(battle, 0, 1);
 		
 		frame.setVisible(true);
 
-
-
-
-
-
 		frame.addComponentListener(new ComponentAdapter() {
             public void componentResized(ComponentEvent componentEvent) {
-				
-			}
-		});
+				title.resizeComponents(frame);
+				winCon.setBounds(0, 0, frame.getWidth(), frame.getHeight());
+				battle.setBounds(0, 0, frame.getWidth(), frame.getHeight());
+            }
+        });
+
+
+
+
+
+
+		
 		//brauchen wir nen Phasenindikator z.B. ne int um GUI zu verändern?
 		
 		//

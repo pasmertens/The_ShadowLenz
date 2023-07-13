@@ -41,7 +41,7 @@ public class GameFrame extends JFrame{
 
     private void initLayeredPane() {
         layers = new JLayeredPane();
-        layers.setLayout(new BorderLayout());
+        //layers.setLayout(new BorderLayout());
         setContentPane(layers);
     }
 }

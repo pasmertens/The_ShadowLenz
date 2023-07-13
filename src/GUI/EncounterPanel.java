@@ -5,30 +5,48 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-public class FightPanel extends JPanel {
+import gameengine.CoreLogic;
 
-    private JButton attackButton;
+public class EncounterPanel extends JPanel {
 
-    private JLabel fightLabel;
+    private JButton fightButton;
+    private JButton stealButton;
+
+    private JLabel encounterLabel;
 
     private JFrame f;
 
-    public FightPanel(JFrame frame) {
+    private CoreLogic l;
+
+    public EncounterPanel(JFrame frame, CoreLogic logic) {
         f = frame;
+
         setProperties();
 
-        fightLabel = new JLabel("Was willst du tun?");
+        encounterLabel = new JLabel("null");
 
-        JPanel textPanel = createTextPanel(fightLabel);
+        JPanel textPanel = createTextPanel(encounterLabel);
         JPanel buttonPanel = createButtonPanel();
         
-        attackButton = createButton(f, "Angreifen");
-        buttonPanel.add(attackButton);    
+        fightButton = createButton(f, "Kämpfen");
+        fightButton.addActionListener(e -> {
+            logic.phase = 43;
+        });
 
+        stealButton = createButton(f, "Den Schlüssel klauen");
+        stealButton.addActionListener(e -> {
+            
+        });
+        
+        buttonPanel.add(fightButton);   
+        buttonPanel.add(stealButton);
+        
         add(textPanel);
         add(buttonPanel);
-        
     }
+       
+    
+    
 
     public void setProperties() {
         /* 
@@ -78,5 +96,9 @@ public class FightPanel extends JPanel {
         });
 
         return button;
+    }
+
+    public void updateText(String newtext) {
+        encounterLabel.setText(newtext);
     }
 }
